@@ -52,7 +52,8 @@
 			<div class="account-content">
 				<div class="login-wrapper bg-img">
                     <div class="login-content authent-content">
-                        <form action="https://dreamspos.dreamstechnologies.com/html/template/index.html">
+                        <form action="{{ route('main_dashboard_view') }}" method="POST">
+                            @csrf
                             <div class="login-userset">
                                 <div class="login-logo logo-normal">
                                    <img src="assets/img/logo.svg" alt="img">
