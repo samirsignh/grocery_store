@@ -36,9 +36,29 @@
             .login-wrapper.bg-img{
                 flex-direction: row-reverse;
             }
-            .login-wrapper .login-content.authent-content {
-                width: 45%;
+            .login-wrapper.bg-img {
+                position: relative;
             }
+
+            /* Black + Blur Overlay */
+            .login-wrapper.bg-img::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgb(0 0 0 / 33%);
+                backdrop-filter: blur(0.6px);
+                z-index: 1;
+            }
+
+            /* Ensure content stays above overlay */
+            .login-content {
+                position: relative;
+                z-index: 2;
+            }
+
         </style>
     </head>
     <body class="account-page">
@@ -66,11 +86,11 @@
                                    <h4 class="fs-16">Access the Dreamspos panel using your email and passcode.</h4>
                                </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Email <span class="text-danger"> *</span></label>
+                                    <label class="form-label">Mobile Number <span class="text-danger"> *</span></label>
                                     <div class="input-group">
                                         <input type="text" value="" class="form-control border-end-0">
                                         <span class="input-group-text border-start-0">
-                                            <i class="ti ti-mail"></i>
+                                            <i class="ti ti-phone"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -98,34 +118,6 @@
                                </div>
                                <div class="form-login">
                                    <button type="submit" class="btn btn-primary w-100">Sign In</button>
-                               </div>
-                               <div class="signinform">
-                                   <h4>New on our platform?<a href="register.html" class="hover-a"> Create an account</a></h4>
-                               </div>
-                               <div class="form-setlogin or-text">
-                                   <h4>OR</h4>
-                               </div>
-                               <div class="mt-2">
-                                   <div class="d-flex align-items-center justify-content-center flex-wrap">
-                                       <div class="text-center me-2 flex-fill">
-                                           <a href="javascript:void(0);"
-                                               class="br-10 p-2 btn btn-info d-flex align-items-center justify-content-center">
-                                               <img class="img-fluid m-1" src="{{ asset('assets/img/icons/facebook-logo.svg') }}" alt="Facebook">
-                                           </a>
-                                       </div>
-                                       <div class="text-center me-2 flex-fill">
-                                           <a href="javascript:void(0);"
-                                               class="btn btn-white br-10 p-2  border d-flex align-items-center justify-content-center">
-                                               <img class="img-fluid m-1" src="{{ asset('assets/img/icons/google-logo.svg') }}" alt="Facebook">
-                                           </a>
-                                       </div>
-                                       <div class="text-center flex-fill">
-                                           <a href="javascript:void(0);"
-                                               class="bg-dark br-10 p-2 btn btn-dark d-flex align-items-center justify-content-center">
-                                               <img class="img-fluid m-1" src="{{ asset('assets/img/icons/apple-logo.svg') }}" alt="Apple">
-                                           </a>
-                                       </div>
-                                   </div>
                                </div>
                                <div class="my-4 d-flex justify-content-center align-items-center copyright-text">
                                 <p>Copyright &copy; {{ date('Y') }} RS Pvt Ltd</p>
