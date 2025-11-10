@@ -34668,7 +34668,7 @@ a.link-hover:hover {
   }
 }
 .login-wrapper .login-content.authent-content {
-  /* width: 50%; */
+  width: 45%;
 }
 @media (max-width: 991.96px) {
   .login-wrapper .login-content.authent-content {

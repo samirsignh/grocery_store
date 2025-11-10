@@ -47,8 +47,17 @@
 
 	<!-- Color Picker Css -->
 	<link rel="stylesheet" href="{{ asset('assets/plugins/%40simonwep/pickr/themes/nano.min.css') }}">
-
+	<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+	
+	<style>
+		.toast-success {
+			background-color: rgb(0, 107, 0);
+		}
 
+		.toast-error {
+			background-color: rgb(186, 0, 0);
+		}
+	</style>
 </head>

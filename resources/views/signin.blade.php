@@ -30,6 +30,8 @@
         <!-- Tabler Icon CSS -->
 	    <link rel="stylesheet" href="{{ asset('assets/plugins/tabler-icons/tabler-icons.min.css') }}">
 
+        <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+
 	    <!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 		<style>
@@ -58,7 +60,13 @@
                 position: relative;
                 z-index: 2;
             }
+            .toast-success {
+                background-color: rgb(0, 107, 0);
+            }
 
+            .toast-error {
+                background-color: rgb(186, 0, 0);
+            }
         </style>
     </head>
     <body class="account-page">
@@ -72,7 +80,7 @@
 			<div class="account-content">
 				<div class="login-wrapper bg-img">
                     <div class="login-content authent-content">
-                        <form action="{{ route('main_dashboard_view') }}" method="POST">
+                        <form action="{{ route('doLogin') }}" method="POST">
                             @csrf
                             <div class="login-userset">
                                 <div class="login-logo logo-normal">
@@ -83,21 +91,21 @@
                                </a>
                                <div class="login-userheading">
                                    <h3>Sign In</h3>
-                                   <h4 class="fs-16">Access the Dreamspos panel using your email and passcode.</h4>
+                                   <h4 class="fs-16">Access the Portal using your user id and passcode.</h4>
                                </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Mobile Number <span class="text-danger"> *</span></label>
+                                    <label class="form-label fs-14 fw-bold">User Id<span class="text-danger"> *</span></label>
                                     <div class="input-group">
-                                        <input type="text" value="" class="form-control border-end-0">
+                                        <input type="text" name="user_id" id="user_id" class="form-control border-end-0" placeholder="Enter user id">
                                         <span class="input-group-text border-start-0">
                                             <i class="ti ti-phone"></i>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Password <span class="text-danger"> *</span></label>
+                                    <label class="form-label fs-14 fw-bold">Password <span class="text-danger"> *</span></label>
                                     <div class="pass-group">
-                                        <input type="password" class="pass-input form-control">
+                                        <input type="password" name="password" id="password" class="pass-input form-control" placeholder="Enter password">
                                         <span class="ti toggle-password ti-eye-off text-gray-9"></span>
                                     </div>
                                 </div>
@@ -106,12 +114,12 @@
                                        <div class="col-12 d-flex align-items-center justify-content-between">
                                            <div class="custom-control custom-checkbox">
                                                <label class="checkboxs ps-4 mb-0 pb-0 line-height-1 fs-16 text-gray-6">
-                                                   <input type="checkbox" class="form-control">
-                                                   <span class="checkmarks"></span>Remember me
+                                                   {{-- <input type="checkbox" class="form-control">
+                                                   <span class="checkmarks"></span>Remember me --}}
                                                </label>
                                            </div>
                                            <div class="text-end">
-                                               <a class="text-orange fs-16 fw-medium" href="forgot-password.html">Forgot Password?</a>
+                                               <a class="text-orange fs-16 fw-medium" href="javascript:;">Forgot Password?</a>
                                            </div>
                                        </div>                                    
                                    </div>
@@ -132,19 +140,49 @@
 		  
 		
 		<!-- jQuery -->
-        <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}" type="629eff7f0d24c8b68e3813e2-text/javascript"></script>
+        <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
 
          <!-- Feather Icon JS -->
-		<script src="{{ asset('assets/js/feather.min.js') }}" type="629eff7f0d24c8b68e3813e2-text/javascript"></script>
+		<script src="{{ asset('assets/js/feather.min.js') }}"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" type="629eff7f0d24c8b68e3813e2-text/javascript"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 		
 		<!-- Custom JS -->
-        <script src="{{ asset('assets/js/script.js') }}" type="629eff7f0d24c8b68e3813e2-text/javascript"></script>
+        <script src="{{ asset('assets/js/script.js') }}"></script>
 
-    <script src="{{ asset('assets/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js') }}" data-cf-settings="629eff7f0d24c8b68e3813e2-|49" defer></script>
+        <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right", // Center position
+            "showDuration": "300",
+            "hideDuration": "2000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
 
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if (session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        // Display validation errors if available
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
 </body>
 
 <!-- Mirrored from dreamspos.dreamstechnologies.com/html/template/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Oct 2025 05:43:07 GMT -->

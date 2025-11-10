@@ -1,40 +1,70 @@
 <!-- jQuery -->
-	<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+
+	<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 
 	<!-- Feather Icon JS -->
-	<script src="{{ asset('assets/js/feather.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/feather.min.js') }}"></script>
 
 	<!-- Slimscroll JS -->
-	<script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
 	<!-- Bootstrap Core JS -->
-	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
 	<!-- ApexChart JS -->
-	<script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
-	<script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script>
 
 	<!-- Chart JS -->
-	<script src="{{ asset('assets/plugins/chartjs/chart.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
-	<script src="{{ asset('assets/plugins/chartjs/chart-data.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/plugins/chartjs/chart.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/chartjs/chart-data.js') }}"></script>
 
 	<!-- Daterangepikcer JS -->
-	<script src="{{ asset('assets/js/moment.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
-	<script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/moment.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
 
 	<!-- Select2 JS -->
-	<script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
 
 	<!-- Color Picker JS -->
-	<script src="{{ asset('assets/plugins/%40simonwep/pickr/pickr.es5.min.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/plugins/%40simonwep/pickr/pickr.es5.min.js') }}"></script>
 
 	<!-- Custom JS -->
-	<script src="{{ asset('assets/js/theme-colorpicker.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
-	<script src="{{ asset('assets/js/script.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>
+	<script src="{{ asset('assets/js/theme-colorpicker.js') }}"></script>
+	<script src="{{ asset('assets/js/script.js') }}"></script>
 
-	
-<script src="{{ asset('assets/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js') }}" data-cf-settings="eddcfdd186a34421fb5bff82-|49" defer></script>
-{{-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3ca157e612a14eccbb30cf6db6691c29","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script> --}}
+	<script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right", // Center position
+            "showDuration": "300",
+            "hideDuration": "2000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if (session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        // Display validation errors if available
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
+
 </body>
 
 
