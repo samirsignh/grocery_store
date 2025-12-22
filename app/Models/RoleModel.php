@@ -13,4 +13,14 @@ class RoleModel extends Model
         'cBy',
         'dBy',
     ];
+
+    public static function get_role_list()
+    {
+        return self::where(['status' => 1])->get();
+    }
+
+    public static function insert_roles($data)
+    {
+        return self::insert($data);
+    }
 }

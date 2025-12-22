@@ -15,7 +15,7 @@
 	<meta name="robots" content="index, follow">
 	<title>My Store</title>
 
-	{{-- <script src="{{ asset('assets/js/theme-script.js') }}" type="eddcfdd186a34421fb5bff82-text/javascript"></script>	 --}}
+	{{-- <script src="{{ asset('assets/js/theme-script.js') }}" ></script>	 --}}
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
@@ -50,14 +50,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/custome_css.css') }}">
+	<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
 	
-	<style>
-		.toast-success {
-			background-color: rgb(0, 107, 0);
-		}
-
-		.toast-error {
-			background-color: rgb(186, 0, 0);
-		}
-	</style>
 </head>

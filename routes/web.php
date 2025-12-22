@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SigninController;
+use App\Http\Controllers\master\RoleMasterController;
 
 Route::get('/', function () {
     return view('signin');
@@ -16,3 +17,7 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('user-logout', [SigninController::class, 'userLogout'])->name('userLogout');
 });
 
+Route::middleware(['auth.user'])->group(function () {
+    Route::get('roles', [RoleMasterController::class, 'role_list'])->name('role_list');
+    Route::post('roles', [RoleMasterController::class, 'store_role_details'])->name('store_role_details');
+});

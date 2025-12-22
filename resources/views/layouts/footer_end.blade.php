@@ -9,6 +9,10 @@
 	<!-- Slimscroll JS -->
 	<script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
+	<!-- Datatable JS -->
+	<script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>
+
 	<!-- Bootstrap Core JS -->
 	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
